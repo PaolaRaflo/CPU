@@ -69,3 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     generarTabla("Mañana");
 });
+
+btnCancelar.addEventListener("click", function () {
+    window.location.href = "aula.html";
+});

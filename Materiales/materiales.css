@@ -7,23 +7,33 @@
 }
 
 .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); /* Agrandar */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Oscurecer detrás */
 }
 
 .btn-ingresar {
-    width: 100%;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    width: auto;
+    padding: 5px 15px;
+    font-size: 0.9rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+    background-color: #28a745; /* Verde original */
+    color: white;
+    border: none;
 }
 
 .btn-ingresar:hover {
-    background-color: #1b5e20;
+    background-color: #1b5e20; /* Verde más oscuro */
 }
 
 /* Responsividad */
 @media (max-width: 768px) {
     .card-title {
         font-size: 1rem;
+    }
+    .btn-ingresar {
+        font-size: 0.8rem;
     }
 }

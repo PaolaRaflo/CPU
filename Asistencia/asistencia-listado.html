@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula - CPU</title>
+    <title>Asistencia Auxiliares</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../css/menuS.css">
-    <link rel="stylesheet" href="aula.css">
+    <link rel="stylesheet" href="/css/menuS.css">
+    <link rel="stylesheet" href="/Asistencia/asistencia.css">
 </head>
 <body>
-    <!-- Encabezado superior -->
+    <!-- Encabezado -->
     <header class="header d-flex justify-content-between align-items-center p-2 border-bottom">
         <h1 class="h4 ml-3"></h1>
         <div class="user-info d-flex align-items-center mr-3">
@@ -18,15 +18,6 @@
             <div class="d-flex flex-column align-items-end">
                 <span class="user-name">MILI JOHANA PAIMA PAIMA</span>
                 <span class="user-role text-danger">Asistente de TI</span>
-            </div>
-            <div class="dropdown">
-                <a href="#" data-toggle="dropdown" style="margin-left: 8px;">
-                    <img src="../img/perfil-icon.png" alt="Perfil" style="width: 45px; height: 45px; border-radius: 50%; border: 1px solid #333;">
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="../perfil.html">Ver Perfil</a>
-                    <a class="dropdown-item" href="../index.html" onclick="logout()">Cerrar Sesión</a>
-                </div>
             </div>
         </div>
     </header>
@@ -83,60 +74,82 @@
     <!-- Contenido principal -->
     <main class="main-content">
         <div class="container mt-4">
-            <!-- Botón de Volver -->
-            <a href="horario.html" class="back-button">
-                <i class="bi bi-arrow-left"></i> AULAS
+            <a href="asistencia-auxiliares.html" class="back-button d-flex align-items-center mb-4">
+                <i class="bi bi-arrow-left"></i> <span class="ml-2">ASISTENCIA</span>
             </a>
-            <h3 id="aula-title" class="text-center">Aula: A-01</h3>
 
-            <!-- Tabla de horarios -->
-            <div class="mt-4">
-                <h4>Listado de Horarios</h4>
+            <!-- Título dinámico -->
+            <h3 id="turno-title" class="text-center mb-4"></h3>
+
+            <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">N°</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Turno</th>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Operaciones</th>
+                            <th scope="col">DNI</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Asistencia</th>
+                            <th scope="col">Observación</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Horario A-01</td>
-                            <td>Mañana</td>
+                            <td>75698086</td>
+                            <td>Padilla Mendo</td>
+                            <td>Osmer</td>
                             <td>
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="estado1" checked>
-                                    <label class="custom-control-label" for="estado1">Activo</label>
-                                </div>
+                                <input type="checkbox" class="form-check-input" />
                             </td>
                             <td>
-                                <button class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
+                                <input type="text" class="form-control" placeholder="Observación" />
                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Horario A-01</td>
-                            <td>Tarde</td>
+                            <td>75698086</td>
+                            <td>Vázquez García</td>
+                            <td>Frank Patrick</td>
                             <td>
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="estado2" checked>
-                                    <label class="custom-control-label" for="estado2">Activo</label>
-                                </div>
+                                <input type="checkbox" class="form-check-input" />
                             </td>
                             <td>
-                                <button class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
+                                <input type="text" class="form-control" placeholder="Observación" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>75698086</td>
+                            <td>Paima Paima</td>
+                            <td>Mili</td>
+                            <td>
+                                <input type="checkbox" class="form-check-input" />
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Observación" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>75698086</td>
+                            <td>Ramos Flores</td>
+                            <td>Paola</td>
+                            <td>
+                                <input type="checkbox" class="form-check-input" />
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Observación" />
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <a href="nuevo-horario.html" class="btn btn-success float-right">
-                    <i class="bi bi-plus"></i> Nuevo Horario
-                </a>
             </div>
+
+            <div class="d-flex justify-content-end mt-4">
+                <button class="btn btn-danger mr-2" onclick="cancelarAsistencia()">Cancelar</button>
+                <button class="btn btn-success" onclick="guardarAsistencia()">Guardar</button>
+            </div>                      
         </div>
     </main>
 
@@ -145,9 +158,39 @@
         © 2023 Centro Pre Universitario. Todos los derechos reservados.
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Obtener el turno desde la URL
+        function obtenerTurnoDeURL() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('turno') || 'mañana';
+        }
+
+        // Mostrar el turno en el título
+        function mostrarTurno() {
+            const turno = obtenerTurnoDeURL();
+            const turnoTitle = document.getElementById('turno-title');
+            turnoTitle.textContent = `Listado de Auxiliares - Turno: ${turno.charAt(0).toUpperCase() + turno.slice(1)}`;
+        }
+
+        function cancelarAsistencia() {
+            window.location.href = "asistencia.html";
+        }
+
+        function guardarAsistencia() {
+            alert("Asistencia registrada");
+            window.location.href = "asistencia.html";
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('hidden');
+        }
+
+        // Inicializar
+        mostrarTurno();
+    </script>
+    <script src="asistencia.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/script.js"></script>
     <script>
         function toggleSidebar() {
@@ -173,5 +216,6 @@
             }
         });
     </script>
+
 </body>
 </html>
