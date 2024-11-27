@@ -93,3 +93,31 @@ window.addEventListener('resize', () => {
 
 // Asignar evento al botón
 document.getElementById("toggleSidebarBtn").addEventListener("click", toggleSidebar);
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.querySelector(".sidebar");
+    const toggleButton = document.querySelector(".btn-toggle-sidebar");
+
+    // Función para manejar la visibilidad de la barra lateral en función del ancho de la ventana
+    function handleResponsiveSidebar() {
+        if (window.innerWidth <= 768) {
+            sidebar.classList.add("hidden"); // Ocultar barra lateral en pantallas pequeñas
+            toggleButton.style.display = "block"; // Mostrar botón de alternar
+        } else {
+            sidebar.classList.remove("hidden"); // Mostrar barra lateral en pantallas grandes
+            toggleButton.style.display = "none"; // Ocultar botón de alternar
+        }
+    }
+
+    // Detectar redimensionamiento de la ventana
+    window.addEventListener("resize", handleResponsiveSidebar);
+
+    // Inicializar estado de la barra lateral
+    handleResponsiveSidebar();
+
+    // Alternar la barra lateral al hacer clic en el botón
+    toggleButton.addEventListener("click", function () {
+        sidebar.classList.toggle("hidden");
+    });
+});

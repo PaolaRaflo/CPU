@@ -7,21 +7,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/menuS.css">
-    <link rel="stylesheet" href="aula.css">
+    <link rel="stylesheet" href="horario.css">
 </head>
 <body onload="checkAuthentication()">
     <!-- Encabezado superior -->
     <header class="header d-flex justify-content-between align-items-center p-2 border-bottom">
-        <h1 class="h4 ml-3">CENTRO PRE UNIVERSITARIO</h1>
-        <div class="user-info d-flex align-items-center mr-3">
+        <div class="user-info d-flex align-items-center ml-auto">
             <i class="bi bi-bell mr-3"></i>
-            <div class="d-flex flex-column align-items-end">
+            <div class="d-flex flex-column align-items-end user-details">
                 <span class="user-name">MILI JOHANA PAIMA PAIMA</span>
                 <span class="user-role text-success">Asistente de TI</span>
             </div>
             <div class="dropdown">
-                <a href="#" data-toggle="dropdown" style="margin-left: 8px;">
-                    <img src="/img/perfil-icon.png" alt="Perfil" style="width: 45px; height: 45px; border-radius: 50%; border: 1px solid #333;">
+                <a href="#" data-toggle="dropdown" class="d-flex align-items-center" style="margin-left: 8px;">
+                    <img src="/img/perfil-icon.png" alt="Perfil" class="profile-icon">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="/perfil.html">Ver Perfil</a>
@@ -82,6 +81,7 @@
             <a href="horario.html" class="back-button">
                 <i class="bi bi-arrow-left"></i> AULAS
             </a>
+            
             <h3 id="aula-title" class="text-center">Aula: A-01</h3>
 
             <!-- Tabla de horarios -->
@@ -104,10 +104,12 @@
                             <td>Mañana</td>
                             <td>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="estado1" checked>
+                                    <input type="checkbox" class="custom-control-input switch-horario" id="estado1" checked>
                                     <label class="custom-control-label" for="estado1">Activo</label>
                                 </div>
                             </td>
+                            
+                            
                             <td>
                                 <button class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
                             </td>
@@ -118,10 +120,11 @@
                             <td>Tarde</td>
                             <td>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="estado2" checked>
+                                    <input type="checkbox" class="custom-control-input switch-horario" id="estado2" checked>
                                     <label class="custom-control-label" for="estado2">Activo</label>
                                 </div>
                             </td>
+                            
                             <td>
                                 <button class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
                             </td>
@@ -143,6 +146,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/Horarios/aula.js"></script>
     <script src="js/script.js"></script>
     <script>
         function toggleSidebar() {

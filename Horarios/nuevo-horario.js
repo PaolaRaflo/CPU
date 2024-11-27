@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnGuardar = document.getElementById("btnGuardar");
     const btnLimpiar = document.getElementById("btnLimpiar");
     const turnoSelect = document.getElementById("turnoSelect");
+    const cursoSelect = document.getElementById("cursoSelect");
+    const diaSelect = document.getElementById("diaSelect");
+    const horaInicio = document.getElementById("horaInicio");
+    const horaFin = document.getElementById("horaFin");
 
     const horariosManana = [
         "07:00 - 07:50",
@@ -45,7 +49,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     btnAgregar.addEventListener("click", function () {
-        Swal.fire("¡Horario Agregado!", "El horario fue agregado correctamente", "success");
+        // Obtener valores del formulario
+        const curso = cursoSelect.value;
+        const dia = diaSelect.value;
+        const inicio = horaInicio.value;
+        const fin = horaFin.value;
+
+        if (!curso || !dia || !inicio || !fin) {
+            Swal.fire("Error", "Completa todos los campos antes de agregar.", "error");
+            return;
+        }
+
+        // Buscar la fila correspondiente al rango horario
+        const filas = tablaHorario.querySelectorAll("tr");
+        let horarioEncontrado = false;
+
+        filas.forEach((fila) => {
+            if (fila.children[0].textContent.includes(`${inicio} - ${fin}`)) {
+                const index = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"].indexOf(dia);
+                if (index !== -1) {
+                    fila.children[index + 1].textContent = curso;
+                    horarioEncontrado = true;
+                }
+            }
+        });
+
+        if (horarioEncontrado) {
+            Swal.fire("¡Horario Agregado!", "El horario fue agregado correctamente.", "success");
+        } else {
+            Swal.fire("Error", "El rango horario no coincide con la tabla actual.", "error");
+        }
     });
 
     btnGuardar.addEventListener("click", function () {
@@ -55,13 +88,20 @@ document.addEventListener("DOMContentLoaded", function () {
             icon: "success",
             confirmButtonText: "Aceptar",
         }).then(() => {
-            window.location.href = "horario.html";
+            window.location.href = "aula.html";
         });
     });
 
     btnLimpiar.addEventListener("click", function () {
-        document.getElementById("formHorario").reset();
+        // Limpia solo los campos Curso, Día, Hora Inicio, y Hora Fin
+        cursoSelect.selectedIndex = 0; // Restablece el curso al primero
+        diaSelect.selectedIndex = 0; // Restablece el día al primero
+        horaInicio.value = ""; // Limpia el campo de hora de inicio
+        horaFin.value = ""; // Limpia el campo de hora de fin
     });
+    
+
+
 
     turnoSelect.addEventListener("change", function () {
         generarTabla(turnoSelect.value);
@@ -70,6 +110,6 @@ document.addEventListener("DOMContentLoaded", function () {
     generarTabla("Mañana");
 });
 
-btnCancelar.addEventListener("click", function () {
+document.getElementById("btnCancelar").addEventListener("click", function () {
     window.location.href = "aula.html";
 });

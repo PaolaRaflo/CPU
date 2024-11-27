@@ -1,10 +1,10 @@
 /* Barra lateral */
 .sidebar {
     position: fixed;
-    top: 60px; /* Ajuste para que el menú esté debajo del encabezado */
+    top: 0; /* Se extiende hasta el borde superior */
     left: 0;
     width: 200px;
-    height: calc(100vh - 60px); /* Reducir la altura para compensar el margen superior */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
     background-color: #2e7d32;
     z-index: 1050;
     overflow-y: auto;
@@ -18,7 +18,7 @@
 /* Botón para alternar la barra lateral */
 .btn-toggle-sidebar {
     position: fixed;
-    top: 70px; /* Ajuste para que el botón esté alineado con el menú */
+    top: 10px; /* Alineado al borde superior */
     left: 210px; /* Posición lateral */
     z-index: 1100;
     background-color: #2e7d32;
@@ -82,9 +82,114 @@
     margin-left: 10px;
 }
 
+/* Estilos para el encabezado */
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Información del usuario */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-details {
+    display: none; /* Por defecto, oculta el texto en pantallas pequeñas */
+}
+
+.profile-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1); /* Efecto al pasar el mouse */
+}
+
+/* Responsividad */
+@media (min-width: 768px) {
+    .user-details {
+        display: flex; /* Muestra el texto del perfil en pantallas más grandes */
+        flex-direction: column;
+        align-items: flex-end;
+        margin-right: 10px;
+    }
+
+    .user-name {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .user-role {
+        font-size: 12px;
+        color: #28a745;
+    }
+}
+
 @media (max-width: 768px) {
     .footer {
         width: calc(100% - 10px);
         margin-left: 10px;
+    }
+}
+
+/* Ajustar la barra lateral y el botón de alternar */
+
+/* Para pantallas pequeñas (<= 768px) */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%); /* Oculta la barra lateral */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.hidden {
+        transform: translateX(-100%);
+    }
+
+    .main-content {
+        margin-left: 0; /* Sin margen para el contenido principal */
+    }
+
+    .btn-toggle-sidebar {
+        display: block; /* Mostrar botón de alternar */
+        position: fixed;
+        top: 10px;
+        left: 10px; /* Siempre visible en la esquina */
+        z-index: 1100;
+        background-color: #2e7d32;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+/* Para pantallas grandes (> 768px) */
+@media (min-width: 769px) {
+    .sidebar {
+        transform: translateX(0); /* Barra lateral visible */
+    }
+
+    .sidebar.hidden {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 200px; /* Espacio reservado para la barra lateral */
+    }
+
+    .btn-toggle-sidebar {
+        display: none; /* Ocultar botón de alternar */
     }
 }

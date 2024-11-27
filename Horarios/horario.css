@@ -37,3 +37,14 @@
         font-size: 0.8rem;
     }
 }
+.back-button {
+    font-weight: bold; /* Texto en negrita */
+    color: black; /* Color inicial negro */
+    text-decoration: none; /* Sin subrayado por defecto */
+    display: flex;
+    align-items: center;
+}
+
+.back-button:hover {
+    color: #28a745; /* Cambia a verde cuando el cursor está encima */
+}

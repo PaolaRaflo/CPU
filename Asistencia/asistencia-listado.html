@@ -12,16 +12,15 @@
 <body onload="checkAuthentication()">
     <!-- Encabezado superior -->
     <header class="header d-flex justify-content-between align-items-center p-2 border-bottom">
-        <h1 class="h4 ml-3">CENTRO PRE UNIVERSITARIO</h1>
-        <div class="user-info d-flex align-items-center mr-3">
+        <div class="user-info d-flex align-items-center ml-auto">
             <i class="bi bi-bell mr-3"></i>
-            <div class="d-flex flex-column align-items-end">
+            <div class="d-flex flex-column align-items-end user-details">
                 <span class="user-name">MILI JOHANA PAIMA PAIMA</span>
                 <span class="user-role text-success">Asistente de TI</span>
             </div>
             <div class="dropdown">
-                <a href="#" data-toggle="dropdown" style="margin-left: 8px;">
-                    <img src="/img/perfil-icon.png" alt="Perfil" style="width: 45px; height: 45px; border-radius: 50%; border: 1px solid #333;">
+                <a href="#" data-toggle="dropdown" class="d-flex align-items-center" style="margin-left: 8px;">
+                    <img src="/img/perfil-icon.png" alt="Perfil" class="profile-icon">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="/perfil.html">Ver Perfil</a>
@@ -78,10 +77,11 @@
     <!-- Contenido principal -->
     <main class="main-content">
         <div class="container mt-4">
-            <a href="asistencia-auxiliares.html" class="back-button d-flex align-items-center mb-4">
-                <i class="bi bi-arrow-left"></i> <span class="ml-2">ASISTENCIA</span>
-            </a>
-
+            <!-- Botón de Volver -->
+            <a href="asistencia-auxiliares.html" class="back-button">
+                <i class="bi bi-arrow-left"></i> TURNOS
+            </a>                   
+            
             <!-- Título dinámico -->
             <h3 id="turno-title" class="text-center mb-4"></h3>
 
