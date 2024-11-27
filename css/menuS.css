@@ -15,11 +15,11 @@
     transform: translateX(-100%);
 }
 
-/* Botón para alternar la barra lateral */
+/* Botón para alternar la barra lateral 
 .btn-toggle-sidebar {
     position: fixed;
-    top: 10px; /* Alineado al borde superior */
-    left: 210px; /* Posición lateral */
+    top: 10px; 
+    left: 210px; 
     z-index: 1100;
     background-color: #2e7d32;
     color: white;
@@ -29,7 +29,7 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
-
+*/
 .sidebar.hidden + .btn-toggle-sidebar {
     left: 10px;
 }
@@ -142,54 +142,31 @@
     }
 }
 
-/* Ajustar la barra lateral y el botón de alternar */
+/* Botón para alternar la barra lateral */
+.btn-toggle-sidebar {
+    position: fixed;
+    top: 10px; /* Alineado al borde superior */
+    left: 10px; /* Posición lateral siempre visible */
+    z-index: 1100;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: block; /* Siempre visible */
+}
 
-/* Para pantallas pequeñas (<= 768px) */
+/* Responsividad */
 @media (max-width: 768px) {
-    .sidebar {
-        transform: translateX(-100%); /* Oculta la barra lateral */
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .sidebar.hidden {
-        transform: translateX(-100%);
-    }
-
-    .main-content {
-        margin-left: 0; /* Sin margen para el contenido principal */
-    }
-
     .btn-toggle-sidebar {
-        display: block; /* Mostrar botón de alternar */
-        position: fixed;
-        top: 10px;
-        left: 10px; /* Siempre visible en la esquina */
-        z-index: 1100;
-        background-color: #2e7d32;
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
+        left: 10px; /* Aseguramos que se mantenga visible en móviles */
     }
 }
 
-/* Para pantallas grandes (> 768px) */
 @media (min-width: 769px) {
-    .sidebar {
-        transform: translateX(0); /* Barra lateral visible */
-    }
-
-    .sidebar.hidden {
-        transform: translateX(0);
-    }
-
-    .main-content {
-        margin-left: 200px; /* Espacio reservado para la barra lateral */
-    }
-
     .btn-toggle-sidebar {
-        display: none; /* Ocultar botón de alternar */
+        left: 210px; /* Aseguramos que esté alineado correctamente en pantallas grandes */
     }
 }
