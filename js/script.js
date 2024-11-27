@@ -50,7 +50,7 @@ function checkAuthentication() {
     const currentPath = window.location.pathname;
 
     // Redirige a index.html si no está autenticado y no está en la página de inicio de sesión
-    if (!isAuthenticated && !currentPath.endsWith('/index.html') && !currentPath.endsWith('index.html')) {
+    if (!isAuthenticated && !currentPath.endsWith('/index.html') && !currentPath.endsWith('/index.html')) {
         window.location.href = '/index.html';
     }
 }
@@ -62,7 +62,7 @@ function logout() {
 }
 
 // Llama a checkAuthentication en cada página cargada, excepto en index.html
-if (!window.location.pathname.endsWith('/index.html') && !window.location.pathname.endsWith('index.html')) {
+if (!window.location.pathname.endsWith('/index.html') && !window.location.pathname.endsWith('/index.html')) {
     window.onload = checkAuthentication;
 }
 

@@ -3,29 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso - CPU</title>
+    <title>Geometría - Información General</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../css/menuS.css">
+    <link rel="stylesheet" href="/Materiales/materiales.css">
+    <link rel="stylesheet" href="/css/menuS.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body>
+<body onload="checkAuthentication()">
     <!-- Encabezado superior -->
     <header class="header d-flex justify-content-between align-items-center p-2 border-bottom">
-        <h1 class="h4 ml-3"></h1>
+        <h1 class="h4 ml-3">CENTRO PRE UNIVERSITARIO</h1>
         <div class="user-info d-flex align-items-center mr-3">
             <i class="bi bi-bell mr-3"></i>
             <div class="d-flex flex-column align-items-end">
                 <span class="user-name">MILI JOHANA PAIMA PAIMA</span>
-                <span class="user-role text-danger">Asistente de TI</span>
+                <span class="user-role text-success">Asistente de TI</span>
             </div>
             <div class="dropdown">
                 <a href="#" data-toggle="dropdown" style="margin-left: 8px;">
-                    <img src="../img/perfil-icon.png" alt="Perfil" style="width: 45px; height: 45px; border-radius: 50%; border: 1px solid #333;">
+                    <img src="/img/perfil-icon.png" alt="Perfil" style="width: 45px; height: 45px; border-radius: 50%; border: 1px solid #333;">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="../perfil.html">Ver Perfil</a>
-                    <a class="dropdown-item" href="../index.html" onclick="logout()">Cerrar Sesión</a>
+                    <a class="dropdown-item" href="/perfil.html">Ver Perfil</a>
+                    <a class="dropdown-item" href="/index.html" onclick="logout()">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
@@ -51,12 +52,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../examenes.html">
-                    <i class="bi bi-pencil-square"></i> Exámenes
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../calificaciones.html">
-                    <i class="bi bi-clipboard-data"></i> Calificaciones
+                    <i class="bi bi-journal"></i> Seminarios
                 </a>
             </li>
             <li class="nav-item">
@@ -88,61 +84,67 @@
                 <i class="bi bi-arrow-left"></i> CURSOS
             </a>
             <h3 id="course-title" class="text-center">Curso: ARITMÉTICA</h3>
-            <div class="accordion" id="accordionExample">
-                <!-- Semana 1 -->
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center" id="heading1">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                SEMANA 1
-                            </button>
-                        </h2>
-                        <i class="bi bi-chevron-down" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1" style="cursor: pointer;"></i>
-                    </div>
-                    <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span><i class="bi bi-file-earmark"></i> Practica 01</span>
-                                <button class="btn btn-link text-dark">
-                                    <i class="bi bi-download"></i>
-                                </button>
-                            </div>
-                            <hr>
-                            <label for="file-upload-1" class="btn btn-link text-primary" style="cursor: pointer;">
-                                <i class="bi bi-upload"></i> Subir Archivo
-                            </label>
-                            <input type="file" id="file-upload-1" style="display: none;" onchange="handleFileUpload(event, 'Semana 1')">
-                        </div>
-                    </div>
+<!-- Dentro del <main> en CURSO.HTML -->
+    <!-- Estructura de las semanas en el <main> -->
+<div class="accordion" id="accordionExample">
+    <!-- Semana 1 -->
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center" id="heading1">
+            <h2 class="mb-0">
+                <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                    SEMANA 1
+                </button>
+            </h2>
+            <!-- Flecha que también actúa como disparador -->
+            <i class="bi bi-chevron-down toggle-icon" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1" style="cursor: pointer;"></i>
+        </div>
+        <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span><i class="bi bi-file-earmark"></i> Práctica 01</span>
+                    <button class="btn btn-link text-dark">
+                        <i class="bi bi-download"></i>
+                    </button>
                 </div>
-                <!-- Semana 2 -->
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center" id="heading2">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                SEMANA 2
-                            </button>
-                        </h2>
-                        <i class="bi bi-chevron-down" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2" style="cursor: pointer;"></i>
-                    </div>
-                    <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span><i class="bi bi-file-earmark"></i> Practica 02</span>
-                                <button class="btn btn-link text-dark">
-                                    <i class="bi bi-download"></i>
-                                </button>
-                            </div>
-                            <hr>
-                            <label for="file-upload-2" class="btn btn-link text-primary" style="cursor: pointer;">
-                                <i class="bi bi-upload"></i> Subir Archivo
-                            </label>
-                            <input type="file" id="file-upload-2" style="display: none;" onchange="handleFileUpload(event, 'Semana 2')">
-                        </div>
-                    </div>
-                </div>
-                <!-- Repetir estructura para más semanas si es necesario -->
+                <hr>
+                <label for="file-upload-1" class="btn btn-link text-dark" style="cursor: pointer;">
+                    <i class="bi bi-upload"></i> Subir Archivo
+                </label>
+                <input type="file" id="file-upload-1" style="display: none;" onchange="handleFileUpload(event, 'Semana 1')">
             </div>
+        </div>
+    </div>
+
+    <!-- Semana 2 -->
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center" id="heading2">
+            <h2 class="mb-0">
+                <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                    SEMANA 2
+                </button>
+            </h2>
+            <!-- Flecha que también actúa como disparador -->
+            <i class="bi bi-chevron-down toggle-icon" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2" style="cursor: pointer;"></i>
+        </div>
+        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span><i class="bi bi-file-earmark"></i> Práctica 02</span>
+                    <button class="btn btn-link text-dark">
+                        <i class="bi bi-download"></i>
+                    </button>
+                </div>
+                <hr>
+                <label for="file-upload-2" class="btn btn-link text-dark" style="cursor: pointer;">
+                    <i class="bi bi-upload"></i> Subir Archivo
+                </label>
+                <input type="file" id="file-upload-2" style="display: none;" onchange="handleFileUpload(event, 'Semana 2')">
+            </div>
+        </div>
+    </div>
+</div>
+
+    
         </div>
     </main>
 

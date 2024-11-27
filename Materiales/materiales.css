@@ -28,12 +28,90 @@
     background-color: #1b5e20; /* Verde más oscuro */
 }
 
+/* Enlaces como "CURSOS" */
+.back-button {
+    color: #000; /* Cambiado a negro */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+    color: #4CAF50; /* Verde suave al pasar */
+}
+
+/* Diseño para semanas */
+.accordion .card {
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.accordion .card-header {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion .card-header:hover {
+    background-color: #f4f4f4;
+}
+
+.accordion .btn-link {
+    font-weight: bold;
+    color: #000; /* Negro */
+    text-decoration: none;
+}
+
+.accordion .btn-link:hover {
+    color: #1b5e20; /* Verde oscuro */
+}
+
 /* Responsividad */
 @media (max-width: 768px) {
     .card-title {
         font-size: 1rem;
     }
+
     .btn-ingresar {
         font-size: 0.8rem;
     }
+}
+
+
+/* Estilo para la flecha */
+.toggle-icon {
+    font-size: 1.5rem; /* Ajustar el tamaño de la flecha */
+    color: #000; /* Negro para consistencia */
+    transition: transform 0.3s ease-in-out; /* Animación */
+}
+
+.toggle-icon[aria-expanded="true"] {
+    transform: rotate(180deg); /* Girar cuando se expande */
+}
+
+.toggle-icon:hover {
+    color: #1b5e20; /* Verde oscuro al pasar el cursor */
+}
+
+/* Otros estilos generales de las semanas ya definidos */
+.card-header {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header:hover {
+    background-color: #f4f4f4;
 }
