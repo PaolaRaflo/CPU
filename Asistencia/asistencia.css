@@ -95,3 +95,13 @@
 .modal button:hover {
     background-color: #218838;
 }
+
+/* Centrar casillas de asistencia */
+.table td {
+    vertical-align: middle; /* Centrar verticalmente */
+    text-align: center;     /* Centrar horizontalmente */
+}
+
+.form-check-input {
+    margin: 0 auto; /* Centrar dentro de la celda */
+}
