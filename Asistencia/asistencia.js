@@ -25,16 +25,23 @@ window.addEventListener('resize', () => {
 // Botón Guardar: Muestra un mensaje de confirmación y redirige
 function guardarAsistencia() {
     Swal.fire({
-        title: "Asistencia Registrada",
-        text: "La asistencia se guardó correctamente.",
-        icon: "success",
-        confirmButtonText: "Aceptar",
-    }).then(() => {
-        window.location.href = "asistencia.html"; // Redirige al finalizar
+        icon: 'success', // Ícono de éxito
+        title: 'Asistencia Registrada',
+        text: 'La asistencia se guardó correctamente.',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#4CAF50', // Color del botón
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "asistencia.html"; // Redirige a la página correspondiente
+        }
     });
 }
+
 
 // Botón Cancelar: Redirige sin mensaje
 function cancelarAsistencia() {
     window.location.href = "asistencia.html";
 }
+
+
+

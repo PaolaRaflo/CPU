@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula - CPU</title>
+    <title>Seminarios</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="/css/menuS.css">
-    <link rel="stylesheet" href="horario.css">
+    <link rel="stylesheet" href="seminarios.css">
 </head>
-<body onload="checkAuthentication()">
+<body>
     <!-- Encabezado superior -->
     <header class="header d-flex justify-content-between align-items-center p-2 border-bottom">
         <div class="user-info d-flex align-items-center ml-auto">
@@ -77,22 +80,22 @@
     <!-- Contenido principal -->
     <main class="main-content">
         <div class="container mt-4">
-            <!-- Botón de Volver -->
             <a href="horario.html" class="back-button">
-                <i class="bi bi-arrow-left"></i> AULAS
+                <i class="bi bi-arrow-left"></i> SEMINARIOS
             </a>
-            
-            <h3 id="aula-title" class="text-center">Aula: A-01</h3>
 
-            <!-- Tabla de horarios -->
+            <h3 id="seminarios-title" class="text-center">Listado de Seminarios</h3>
+
+            <!-- Tabla de seminarios -->
             <div class="mt-4">
-                <h4>Listado de Horarios</h4>
                 <table class="table table-bordered">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">N°</th>
+                            <th scope="col">Semana</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Turno</th>
+                            <th scope="col">Hora Inicio</th>
+                            <th scope="col">Hora Fin</th>
+                            <th scope="col">Link</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Operaciones</th>
                         </tr>
@@ -100,39 +103,42 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Horario A-01</td>
-                            <td>Mañana</td>
+                            <td>Seminario 1</td>
+                            <td>08:00 AM</td>
+                            <td>10:00 AM</td>
+                            <td><a href="#">https://link.com/1</a></td>
                             <td>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input switch-horario" id="estado1" checked>
+                                    <input type="checkbox" class="custom-control-input estado-seminario" id="estado1" checked>
                                     <label class="custom-control-label" for="estado1">Activo</label>
                                 </div>
                             </td>
-                            
-                            
                             <td>
                                 <button class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Horario A-01</td>
-                            <td>Tarde</td>
+                            <td>Seminario 2</td>
+                            <td>08:00 AM</td>
+                            <td>10:00 AM</td>
+                            <td><a href="#">https://link.com/2</a></td>
                             <td>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input switch-horario" id="estado2" checked>
-                                    <label class="custom-control-label" for="estado2">Activo</label>
+                                    <input type="checkbox" class="custom-control-input estado-seminario" id="estado2">
+                                    <label class="custom-control-label" for="estado2">Inactivo</label>
                                 </div>
                             </td>
-                            
                             <td>
                                 <button class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <a href="nuevo-horario.html" class="btn btn-success float-right">
-                    <i class="bi bi-plus"></i> Nuevo Horario
+                <a href="nuevo-seminario.html" class="btn btn-success float-right">
+                    <i class="bi bi-plus"></i> Nuevo Seminario
                 </a>
             </div>
         </div>
@@ -146,32 +152,40 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function guardarSeminario() {
+            // Validación básica
+            const nombre = document.getElementById("nombreSeminario").value;
+            if (!nombre) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Faltan Datos',
+                    text: 'Por favor complete todos los campos.',
+                    confirmButtonText: 'Aceptar'
+                });
+                return;
+            }
+
+            // Mensaje de éxito
+            Swal.fire({
+                icon: 'success',
+                title: 'Seminario Registrado',
+                text: 'El seminario se guardó correctamente.',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                // Cierra el modal y limpia el formulario
+                $('#seminarioModal').modal('hide');
+                document.getElementById("seminarioForm").reset();
+            });
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/Horarios/aula.js"></script>
-    <script src="js/script.js"></script>
+    <script src="seminarios.js"></script>
     <script>
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
-            const mainContent = document.querySelector('.main-content');
-            const toggleButton = document.querySelector('.btn-toggle-sidebar');
-
             sidebar.classList.toggle('hidden');
-            if (sidebar.classList.contains('hidden')) {
-                toggleButton.style.left = '10px';
-            } else {
-                toggleButton.style.left = '210px';
-            }
         }
-
-        // Detectar el cambio de tamaño de la ventana
-        window.addEventListener('resize', () => {
-            const sidebar = document.querySelector('.sidebar');
-            if (window.innerWidth <= 768) {
-                sidebar.classList.add('hidden');
-            } else {
-                sidebar.classList.remove('hidden');
-            }
-        });
     </script>
 </body>
 </html>

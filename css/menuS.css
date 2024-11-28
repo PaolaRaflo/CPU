@@ -29,10 +29,10 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
-*/
+
 .sidebar.hidden + .btn-toggle-sidebar {
     left: 10px;
-}
+}*/
 
 /* Contenido principal */
 .main-content {
@@ -142,11 +142,29 @@
     }
 }
 
+/* Barra lateral */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: #2e7d32;
+    z-index: 1050;
+    overflow-y: auto;
+    transform: translateX(-200px); /* Oculta por defecto */
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.visible {
+    transform: translateX(0); /* Muestra la barra lateral */
+}
+
 /* Botón para alternar la barra lateral */
 .btn-toggle-sidebar {
     position: fixed;
-    top: 10px; /* Alineado al borde superior */
-    left: 10px; /* Posición lateral siempre visible */
+    top: 10px; /* Siempre visible */
+    left: 10px;
     z-index: 1100;
     background-color: #2e7d32;
     color: white;
@@ -155,18 +173,35 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    display: block; /* Siempre visible */
+    display: block;
 }
 
-/* Responsividad */
+/* Ocultar barra lateral en pantallas pequeñas por defecto */
 @media (max-width: 768px) {
-    .btn-toggle-sidebar {
-        left: 10px; /* Aseguramos que se mantenga visible en móviles */
+    .sidebar {
+        transform: translateX(-200px);
+    }
+
+    .sidebar.visible {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
     }
 }
 
+/* Siempre visible en pantallas grandes */
 @media (min-width: 769px) {
+    .sidebar {
+        transform: translateX(0);
+    }
+
     .btn-toggle-sidebar {
-        left: 210px; /* Aseguramos que esté alineado correctamente en pantallas grandes */
+        display: none; /* Ocultar el botón en pantallas grandes */
+    }
+
+    .main-content {
+        margin-left: 200px;
     }
 }

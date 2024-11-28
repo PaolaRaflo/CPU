@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../examenes.html">
+                <a class="nav-link" href="/Materiales/seminarios.html">
                     <i class="bi bi-journal"></i> Seminarios
                 </a>
             </li>
@@ -146,7 +146,7 @@
         function mostrarCursos(docente) {
             cursosContainer.innerHTML = ''; // Limpiar cursos anteriores
             const cursos = cursosPorDocente[docente];
-            cursos.forEach(curso => {
+            cursos.forEach((curso, index) => {
                 const col = document.createElement('div');
                 col.className = 'col-md-6 mb-3';
                 col.innerHTML = `
@@ -154,11 +154,20 @@
                         <div class="card-body">
                             <h5 class="card-title">${curso.curso}</h5>
                             <p>Aula: ${curso.aula}</p>
-                            <a href="#" class="btn btn-ingresar">INGRESAR</a>
+                            <button class="btn btn-ingresar" data-index="${index}">INGRESAR</button>
                         </div>
                     </div>
                 `;
                 cursosContainer.appendChild(col);
+            });
+
+            // Agregar eventos de clic a los botones "INGRESAR"
+            const botones = document.querySelectorAll('.btn-ingresar');
+            botones.forEach((boton, index) => {
+                boton.addEventListener('click', () => {
+                    const cursoSeleccionado = cursos[index];
+                    window.location.href = `asistencia-listado-docente.html?curso=${encodeURIComponent(cursoSeleccionado.curso)}&aula=${encodeURIComponent(cursoSeleccionado.aula)}`;
+                });
             });
         }
 
@@ -170,30 +179,5 @@
             mostrarCursos(docenteSelect.value);
         });
     </script>
-        <script src="js/script.js"></script>
-        <script>
-            function toggleSidebar() {
-                const sidebar = document.querySelector('.sidebar');
-                const mainContent = document.querySelector('.main-content');
-                const toggleButton = document.querySelector('.btn-toggle-sidebar');
-    
-                sidebar.classList.toggle('hidden');
-                if (sidebar.classList.contains('hidden')) {
-                    toggleButton.style.left = '10px';
-                } else {
-                    toggleButton.style.left = '210px';
-                }
-            }
-    
-            // Detectar el cambio de tamaño de la ventana
-            window.addEventListener('resize', () => {
-                const sidebar = document.querySelector('.sidebar');
-                if (window.innerWidth <= 768) {
-                    sidebar.classList.add('hidden');
-                } else {
-                    sidebar.classList.remove('hidden');
-                }
-            });
-        </script>
 </body>
 </html>

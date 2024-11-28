@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asistencia Auxiliares</title>
+    <title>Asistencia Alumnos</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/menuS.css">
     <link rel="stylesheet" href="/Asistencia/asistencia.css">
 </head>
-<body onload="checkAuthentication()">
+<body>
     <!-- Encabezado superior -->
     <header class="header d-flex justify-content-between align-items-center p-2 border-bottom">
         <div class="user-info d-flex align-items-center ml-auto">
@@ -74,27 +74,28 @@
         <i class="bi bi-arrow-left-right"></i>
     </button>
 
+
     <!-- Contenido principal -->
     <main class="main-content">
         <div class="container mt-4">
             <!-- Botón de Volver -->
-            <a href="asistencia-auxiliares.html" class="back-button">
-                <i class="bi bi-arrow-left"></i> TURNOS
-            </a>                   
-            
-            <!-- Título dinámico -->
-            <h3 id="turno-title" class="text-center mb-4"></h3>
+            <a href="asistencia-aulas.html" class="back-button d-flex align-items-center mb-4">
+                <i class="bi bi-arrow-left"></i> <span class="ml-2">AULAS</span>
+            </a>
+
+            <h3 class="text-center mb-4">Lista de Alumnos - Aula: A-01</h3>
 
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">N°</th>
-                            <th scope="col">DNI</th>
+                            <th scope="col">Código</th>
                             <th scope="col">Apellidos</th>
                             <th scope="col">Nombres</th>
+                            <th scope="col">Carrera</th>
                             <th scope="col">Asistencia</th>
-                            <th scope="col">Observación</th>
+                            <th scope="col">Justificación</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -103,47 +104,27 @@
                             <td>75698086</td>
                             <td>Padilla Mendo</td>
                             <td>Osmer</td>
+                            <td>Ingeniería Civil</td>
                             <td>
                                 <input type="checkbox" class="form-check-input" />
                             </td>
+                            
                             <td>
-                                <input type="text" class="form-control" placeholder="Observación" />
+                                <input type="file" class="form-control-file" accept=".jpg,.jpeg,.png,.pdf,.docx" />
                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>75698086</td>
-                            <td>Vázquez García</td>
-                            <td>Frank Patrick</td>
-                            <td>
-                                <input type="checkbox" class="form-check-input" />
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" placeholder="Observación" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>75698086</td>
-                            <td>Paima Paima</td>
-                            <td>Mili</td>
-                            <td>
-                                <input type="checkbox" class="form-check-input" />
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" placeholder="Observación" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>75698086</td>
+                            <td>77757578</td>
                             <td>Ramos Flores</td>
-                            <td>Paola</td>
+                            <td>Armando</td>
+                            <td>Idiomas</td>
                             <td>
                                 <input type="checkbox" class="form-check-input" />
                             </td>
+                            
                             <td>
-                                <input type="text" class="form-control" placeholder="Observación" />
+                                <input type="file" class="form-control-file" accept=".jpg,.jpeg,.png,.pdf,.docx" />
                             </td>
                         </tr>
                     </tbody>
@@ -153,7 +134,7 @@
             <div class="d-flex justify-content-end mt-4">
                 <button class="btn btn-danger mr-2" onclick="cancelarAsistencia()">Cancelar</button>
                 <button class="btn btn-success" onclick="guardarAsistencia()">Guardar</button>
-            </div>                      
+            </div>   
         </div>
     </main>
 
@@ -162,37 +143,6 @@
         © 2023 Centro Pre Universitario. Todos los derechos reservados.
     </footer>
 
-    <script>
-        // Obtener el turno desde la URL
-        function obtenerTurnoDeURL() {
-            const params = new URLSearchParams(window.location.search);
-            return params.get('turno') || 'mañana';
-        }
-
-        // Mostrar el turno en el título
-        function mostrarTurno() {
-            const turno = obtenerTurnoDeURL();
-            const turnoTitle = document.getElementById('turno-title');
-            turnoTitle.textContent = `Listado de Auxiliares - Turno: ${turno.charAt(0).toUpperCase() + turno.slice(1)}`;
-        }
-
-        function cancelarAsistencia() {
-            window.location.href = "asistencia.html";
-        }
-
-        function guardarAsistencia() {
-            alert("Asistencia registrada");
-            window.location.href = "asistencia.html";
-        }
-
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            sidebar.classList.toggle('hidden');
-        }
-
-        // Inicializar
-        mostrarTurno();
-    </script>
     <script src="asistencia.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/script.js"></script>
@@ -220,6 +170,5 @@
             }
         });
     </script>
-
 </body>
 </html>

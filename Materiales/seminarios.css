@@ -1,0 +1,64 @@
+/* Casillas de estado */
+.form-switch {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaciado entre el switch y el texto */
+}
+
+.form-check-input {
+    width: 34px;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.form-check-input:checked {
+    background-color: #007bff; /* Azul para activado */
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.form-check-input:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.form-check-input:checked:before {
+    transform: translateX(14px);
+}
+
+/* Etiqueta del estado */
+.form-check-label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #000;
+    margin-left: 5px;
+}
+
+
+.custom-control-label {
+    font-weight: normal; /* Cambia de bold a normal */
+    color: #000; /* Color negro por defecto */
+    margin-left: 5px; /* Espaciado opcional */
+}
+
+.custom-control-input:checked ~ .custom-control-label {
+    color: blue; /* Cambia a azul cuando está activo */
+}
+
+.custom-control-input:not(:checked) ~ .custom-control-label {
+    color: red; /* Cambia a rojo cuando está inactivo */
+}

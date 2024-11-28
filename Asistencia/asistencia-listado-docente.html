@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asistencia Auxiliares</title>
+    <title>Asistencia Curso</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/menuS.css">
     <link rel="stylesheet" href="/Asistencia/asistencia.css">
 </head>
-<body onload="checkAuthentication()">
+<body>
     <!-- Encabezado superior -->
     <header class="header d-flex justify-content-between align-items-center p-2 border-bottom">
         <div class="user-info d-flex align-items-center ml-auto">
@@ -78,21 +78,20 @@
     <main class="main-content">
         <div class="container mt-4">
             <!-- Botón de Volver -->
-            <a href="asistencia-auxiliares.html" class="back-button">
-                <i class="bi bi-arrow-left"></i> TURNOS
-            </a>                   
-            
-            <!-- Título dinámico -->
-            <h3 id="turno-title" class="text-center mb-4"></h3>
+            <a href="asistencia-cursos.html" class="back-button d-flex align-items-center mb-4">
+                <i class="bi bi-arrow-left"></i> <span class="ml-2">CURSOS</span>
+            </a>
+
+            <h3 class="text-center mb-4">Asistencia del Curso - Aula: A-01</h3>
 
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">N°</th>
-                            <th scope="col">DNI</th>
-                            <th scope="col">Apellidos</th>
-                            <th scope="col">Nombres</th>
+                            <th scope="col">Aula</th>
+                            <th scope="col">Hora de Inicio</th>
+                            <th scope="col">Hora Final</th>
                             <th scope="col">Asistencia</th>
                             <th scope="col">Observación</th>
                         </tr>
@@ -100,9 +99,9 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>75698086</td>
-                            <td>Padilla Mendo</td>
-                            <td>Osmer</td>
+                            <td>A-01</td>
+                            <td>4:00 PM</td>
+                            <td>5:00 PM</td>
                             <td>
                                 <input type="checkbox" class="form-check-input" />
                             </td>
@@ -112,33 +111,9 @@
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>75698086</td>
-                            <td>Vázquez García</td>
-                            <td>Frank Patrick</td>
-                            <td>
-                                <input type="checkbox" class="form-check-input" />
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" placeholder="Observación" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>75698086</td>
-                            <td>Paima Paima</td>
-                            <td>Mili</td>
-                            <td>
-                                <input type="checkbox" class="form-check-input" />
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" placeholder="Observación" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>75698086</td>
-                            <td>Ramos Flores</td>
-                            <td>Paola</td>
+                            <td>A-01</td>
+                            <td>5:00 PM</td>
+                            <td>6:00 PM</td>
                             <td>
                                 <input type="checkbox" class="form-check-input" />
                             </td>
@@ -153,7 +128,7 @@
             <div class="d-flex justify-content-end mt-4">
                 <button class="btn btn-danger mr-2" onclick="cancelarAsistencia()">Cancelar</button>
                 <button class="btn btn-success" onclick="guardarAsistencia()">Guardar</button>
-            </div>                      
+            </div>
         </div>
     </main>
 
@@ -161,65 +136,27 @@
     <footer class="footer text-center">
         © 2023 Centro Pre Universitario. Todos los derechos reservados.
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/Asistencia/asistencia.js"></script>
+    <script src="/js/script.js"></script>
     <script>
-        // Obtener el turno desde la URL
-        function obtenerTurnoDeURL() {
-            const params = new URLSearchParams(window.location.search);
-            return params.get('turno') || 'mañana';
-        }
-
-        // Mostrar el turno en el título
-        function mostrarTurno() {
-            const turno = obtenerTurnoDeURL();
-            const turnoTitle = document.getElementById('turno-title');
-            turnoTitle.textContent = `Listado de Auxiliares - Turno: ${turno.charAt(0).toUpperCase() + turno.slice(1)}`;
-        }
-
         function cancelarAsistencia() {
-            window.location.href = "asistencia.html";
+            window.location.href = "asistencia-cursos.html";
         }
 
         function guardarAsistencia() {
-            alert("Asistencia registrada");
-            window.location.href = "asistencia.html";
+            Swal.fire({
+                icon: 'success',
+                title: 'Asistencia Registrada',
+                text: 'La asistencia se guardó correctamente.',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#28a745',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "asistencia.html";
+                }
+            });
         }
-
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            sidebar.classList.toggle('hidden');
-        }
-
-        // Inicializar
-        mostrarTurno();
     </script>
-    <script src="asistencia.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/script.js"></script>
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            const mainContent = document.querySelector('.main-content');
-            const toggleButton = document.querySelector('.btn-toggle-sidebar');
-
-            sidebar.classList.toggle('hidden');
-            if (sidebar.classList.contains('hidden')) {
-                toggleButton.style.left = '10px';
-            } else {
-                toggleButton.style.left = '210px';
-            }
-        }
-
-        // Detectar el cambio de tamaño de la ventana
-        window.addEventListener('resize', () => {
-            const sidebar = document.querySelector('.sidebar');
-            if (window.innerWidth <= 768) {
-                sidebar.classList.add('hidden');
-            } else {
-                sidebar.classList.remove('hidden');
-            }
-        });
-    </script>
-
 </body>
 </html>

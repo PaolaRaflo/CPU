@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     cancelButtonText: "Cancelar",
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        label.textContent = "Desactivado"; // Cambia el estado a desactivado
+                        label.textContent = "Inactivo"; // Cambia el estado a desactivado
                         label.classList.add("text-danger");
                     } else {
                         this.checked = true; // Revertir el cambio si se cancela

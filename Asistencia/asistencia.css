@@ -102,19 +102,132 @@
     text-align: center;     /* Centrar horizontalmente */
 }
 
+/* Checkbox personalizado */
 .form-check-input {
-    margin: 0 auto; /* Centrar dentro de la celda */
+    appearance: none; /* Eliminar estilo predeterminado */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ced4da; /* Borde gris claro */
+    border-radius: 4px; /* Esquinas redondeadas */
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Al pasar el cursor, cambia el borde a verde */
+.form-check-input:hover {
+    border-color: #28a745; /* Verde al pasar el cursor */
+}
+
+/* Checkbox marcado */
+.form-check-input:checked {
+    background-color: #28a745; /* Fondo verde al marcar */
+    color: white;
+    border-color: #28a745; /* Asegura que el borde sea consistente */
+}
+
+/* Ícono de bien (✓) dentro del checkbox */
+.form-check-input:checked::after {
+    content: "✓"; /* Símbolo de check */
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+}
+
+/* Casilla deshabilitada (opcional) */
+.form-check-input:disabled {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+    cursor: not-allowed;
+}
+
+/* Prevenir el movimiento al marcar */
+.form-check-input:checked,
+.form-check-input:not(:checked) {
+    display: inline-flex; /* Mantén el tamaño constante */
+    width: 20px; /* Igual tamaño al marcado y desmarcado */
+    height: 20px;
+}
+
+/* Campos de observación */
+input.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 8px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Cambiar borde al enfocarse */
+input.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 4px rgba(40, 167, 69, 0.5);
+}
+
+/* Hover para campos de observación */
+input.form-control:hover {
+    border-color: #28a745;
 }
 
 
+
+
+/* Enlace de retroceso */
 .back-button {
     font-weight: bold; /* Texto en negrita */
-    color: black; /* Color inicial */
-    text-decoration: none; /* Sin subrayado predeterminado */
+    color: black; /* Color inicial negro */
+    text-decoration: none; /* Sin subrayado */
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.back-button i {
+    margin-right: 5px; /* Espaciado entre el ícono y el texto */
+}
+
+.back-button:hover {
+    color: #28a745; /* Cambia a verde cuando el cursor está encima */
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+}
+
+
+
+
+
+
+/* Tabla centrada y con márgenes */
+.table {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Estilo para el ícono de asistencia */
+.form-check-icon {
+    font-size: 1.5rem;
+    color: #28a745;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.form-check-icon:hover {
+    transform: scale(1.1);
+    color: #218838;
+}
+
+/* Estilo para el botón de volver */
+.back-button {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
     display: flex;
     align-items: center;
 }
 
 .back-button:hover {
-    color: #28a745; /* Color verde al pasar el mouse */
+    color: #28a745;
 }
+
